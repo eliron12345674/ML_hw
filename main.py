@@ -1,18 +1,38 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+import numpy as np
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def main():
+    tex_all, lb_all, voc, cat = read_train_data(r"data\r8-train-stemmed.txt")
+    pw, p = learn_nb_text()
+    suc = classify_nb_text(pw, p)
+    print(suc)
 
-def print_hi2():
-    print('sdsdsd')
 
-# Press the green button in the gutter to run the script.
+def classify_nb_text(pw, p):
+    pass
+
+
+def learn_nb_text():
+    pass
+
+
+def read_train_data(file_name):
+    file = open(file_name, 'r')
+    lines = file.readlines()
+    texAll = []
+    lbAll = []
+    voc = []
+    for line in lines:
+        splitted = line.split('\t')
+        lbAll.append(splitted[0])
+        texAll.append(splitted[1].split())
+        words = splitted[1].split()
+        for w in words:
+            voc.append(w)
+    voc = set(voc)
+    cat = set(lbAll)
+    return texAll, lbAll, voc, cat
+
+
 if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    main()
