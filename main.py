@@ -36,7 +36,9 @@ def readTrainData(file_name):
 class Myclass:
     name = ''
     number = 0
-    def __init__(self,name,number):
+
+
+    def __init__(self, name, number):
         self.name = name
         self.number = number
 
@@ -53,6 +55,7 @@ class Word:
     trade = 0
     interest = 0
 
+
     def __init__(self, name, total_number):
         self.name = name
         self.total_number = total_number
@@ -68,8 +71,8 @@ def find_word_index(name):
 
 if __name__ == '__main__':
     texAll1, lbAll1, voc1, cat1 = readTrainData('r8-train-stemmed.txt')
-    myclasses = []
-    myvoc = []
+    myclasses = []#array of all the classes whith the number of many time class appear
+    myvoc = []# array of all the voc, for each word we have how many times it appears total and in each class
     for cat in cat1:
         myclasses.append(Myclass(cat, 0))
         print(cat)
@@ -100,7 +103,6 @@ if __name__ == '__main__':
             if class_name == 'interest':
                 word_class.money_fx += 1
         i += 1
-
 
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
